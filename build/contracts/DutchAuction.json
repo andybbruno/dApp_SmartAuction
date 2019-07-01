@@ -7775,12 +7775,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x5e549d75024d611141D00Bb690BAcf66529f7D8F",
-      "transactionHash": "0xa8d0f593d13a389e55d22a999b700129b943d611bfd2b2715aacf6b0e7e88317"
+      "address": "0xbd9834D8CAd510BfDdae0C98e797123fAE788059",
+      "transactionHash": "0xca2ceba40d34f7caf08c6b488a444849d79ca56e52841604ecca93a42a476ff2"
     }
   },
   "schemaVersion": "3.0.11",
-  "updatedAt": "2019-07-01T20:47:40.496Z",
+  "updatedAt": "2019-07-01T21:30:16.789Z",
   "devdoc": {
     "author": "Andrea Bruno 585457",
     "details": "The following comments are written using the Solidity NatSpec Format.",

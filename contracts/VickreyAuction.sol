@@ -25,7 +25,7 @@ contract VickreyAuction is Auction {
     uint reservePrice;
 
     /// @dev The minumum deposit decided by the seller
-    uint min_deposit;
+    uint public min_deposit;
 
     /// @dev The commitment phase lenght (number of blocks)
     uint commitment_len;

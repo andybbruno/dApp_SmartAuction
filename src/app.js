@@ -144,10 +144,7 @@ App = {
 
         web3.eth.getBlock('latest', function (error, result) {
             if (!error) {
-                // console.log(JSON.stringify(result));
                 lastBlock = result;
-            } else {
-                // console.error(error);
             }
         })
 
@@ -218,7 +215,6 @@ App = {
             }
         }).finally(async () => {
             for (var [address, [state, kind]] of App.myMap) {
-                console.log(address + ' ' + state + ' ' + kind);
                 await App.insertEventRow(state,kind,address);
             }
             $('#loadingSpinner').hide()
@@ -408,8 +404,8 @@ App = {
                         gas: 5000000
                     }
                 );
-                alert("AUCTION CORRECTLY CREATED!");
-                await App.changePage("homepage")
+                alert("Auction correctly created!");
+                location.reload();
             } catch (error) {
                 alert(error.message);
             }
@@ -451,8 +447,8 @@ App = {
                         gas: 5000000
                     }
                 );
-                alert("AUCTION CORRECTLY CREATED!");
-                await App.changePage("homepage")
+                alert("Auction correctly created!");
+                location.reload();
             } catch (error) {
                 alert(error.message);
             }
@@ -528,31 +524,30 @@ App = {
 
     getPhase: async () => {
         const address = $('#addressToCall').val()
-        var descr;
+        var phase;
 
         await App.contracts.VickreyAuction.at(address).then(async (instance) => {
-            descr = await instance.phase();
+            phase = await instance.phase();
 
             $("#Description").load("html/phase.html", function () {
-                if (descr == 0) $("#phaseDescription").text("Grace Period")
-                if (descr == 1) $("#phaseDescription").text("Commitment")
-                if (descr == 2) $("#phaseDescription").text("Withdrawal")
-                if (descr == 3) $("#phaseDescription").text("Opening")
-                if (descr == 4) $("#phaseDescription").text("Finished")
+                if (phase == 0) $("#phaseDescription").text("Grace Period")
+                if (phase == 1) $("#phaseDescription").text("Commitment")
+                if (phase == 2) $("#phaseDescription").text("Withdrawal")
+                if (phase == 3) $("#phaseDescription").text("Opening")
+                if (phase == 4) $("#phaseDescription").text("Finished")
             });
         })
     },
 
     getActualPrice: async () => {
         const address = $('#addressToCall').val()
-        var descr;
+        var price;
 
         await App.contracts.DutchAuction.at(address).then(async (instance) => {
-            descr = await instance.getActualPrice.call()
+            price = await instance.getActualPrice.call()
 
             $("#Description").load("html/price.html", function () {
-                console.log(descr)
-                $("#priceDescription").text(descr);
+                $("#priceDescription").text(price);
             });
 
         })
@@ -561,8 +556,6 @@ App = {
     bidDutch: async () => {
         const address = $('#addressToCall').val()
         const val = $('#etherValue').val()
-
-        console.log(address, ">>>", val)
 
         await App.contracts.DutchAuction.at(address).then(async (instance) => {
             try {
@@ -596,6 +589,22 @@ App = {
             } catch (error) {
                 alert("Something went wrong!")
             }
+        })
+    },
+
+    
+    getMinDeposit: async () => {
+        const address = $('#addressToCall').val()
+        var deposit;
+
+        await App.contracts.VickreyAuction.at(address).then(async (instance) => {
+            deposit = await instance.min_deposit()
+            deposit = deposit.toNumber()
+
+            $("#Description").load("html/mindeposit.html", function () {
+                $("#minDeposit").text(deposit);
+            });
+
         })
     },
 
