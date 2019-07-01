@@ -213,9 +213,58 @@ App = {
                     })
                 })
             }
+            //NEW
+        }).then(async () => {
+            for (var i = 0; i < auctAddress.length; i++) {
+                await App.contracts.VickreyAuction.at(auctAddress[i]).then(function (instance) {
+                    instance.auctionStarted({}, {
+                        fromBlock: 0,
+                        toBlock: lastBlock
+                        // toBlock: 'latest',
+                    }).watch(async (error, event) => {
+                        App.myMap.set(event.address, ["Started", "Vickrey"])
+                    })
+                })
+            }
+        }).then(async () => {
+            for (var i = 0; i < auctAddress.length; i++) {
+                await App.contracts.VickreyAuction.at(auctAddress[i]).then(function (instance) {
+                    instance.withdrawalStarted({}, {
+                        fromBlock: 0,
+                        toBlock: lastBlock
+                        // toBlock: 'latest',
+                    }).watch(async (error, event) => {
+                        App.myMap.set(event.address, ["Withdrawal", "Vickrey"])
+                    })
+                })
+            }
+        }).then(async () => {
+            for (var i = 0; i < auctAddress.length; i++) {
+                await App.contracts.VickreyAuction.at(auctAddress[i]).then(function (instance) {
+                    instance.openingStarted({}, {
+                        fromBlock: 0,
+                        toBlock: lastBlock
+                        // toBlock: 'latest',
+                    }).watch(async (error, event) => {
+                        App.myMap.set(event.address, ["Opening", "Vickrey"])
+                    })
+                })
+            }
+        }).then(async () => {
+            for (var i = 0; i < auctAddress.length; i++) {
+                await App.contracts.VickreyAuction.at(auctAddress[i]).then(function (instance) {
+                    instance.auctionFinished({}, {
+                        fromBlock: 0,
+                        toBlock: lastBlock
+                        // toBlock: 'latest',
+                    }).watch(async (error, event) => {
+                        App.myMap.set(event.address, ["Finished", "Vickrey"])
+                    })
+                })
+            }
         }).finally(async () => {
             for (var [address, [state, kind]] of App.myMap) {
-                await App.insertEventRow(state,kind,address);
+                await App.insertEventRow(state, kind, address);
             }
             $('#loadingSpinner').hide()
         })
@@ -592,7 +641,10 @@ App = {
         })
     },
 
-    
+    //
+    // !!!! VICKREY !!!!
+    //
+
     getMinDeposit: async () => {
         const address = $('#addressToCall').val()
         var deposit;
@@ -607,6 +659,100 @@ App = {
 
         })
     },
+
+
+    activateVickreyAuction: async () => {
+        const address = $('#addressToCall').val()
+
+        await App.contracts.VickreyAuction.at(address).then(async (instance) => {
+            try {
+                await instance.activateAuction()
+            } catch (error) {
+                alert("Something went wrong!")
+            }
+        })
+    },
+
+    startWithdrawalVickreyAuction: async () => {
+        const address = $('#addressToCall').val()
+
+        await App.contracts.VickreyAuction.at(address).then(async (instance) => {
+            try {
+                await instance.startWithdrawal()
+            } catch (error) {
+                alert("Something went wrong!")
+            }
+        })
+    },
+
+    startOpeningVickreyAuction: async () => {
+        const address = $('#addressToCall').val()
+
+        await App.contracts.VickreyAuction.at(address).then(async (instance) => {
+            try {
+                await instance.startOpening()
+            } catch (error) {
+                alert("Something went wrong!")
+            }
+        })
+    },
+
+    finalizeVickreyAuction: async () => {
+        const address = $('#addressToCall').val()
+
+        await App.contracts.VickreyAuction.at(address).then(async (instance) => {
+            try {
+                await instance.finalize()
+            } catch (error) {
+                alert("Something went wrong!")
+            }
+        })
+    },
+
+    bidVickreyAuction: async () => {
+        const address = $('#addressToCall').val()
+        const val = $('#bidValueVickrey').val()
+        const hash = $('#hashVickrey').val()
+
+        await App.contracts.VickreyAuction.at(address).then(async (instance) => {
+            try {
+                await instance.bid(hash, {
+                    value: val
+                })
+            } catch (error) {
+                alert("Something went wrong!")
+            }
+        })
+    },
+
+    withdrawVickreyAuction: async () => {
+        const address = $('#addressToCall').val()
+
+        await App.contracts.VickreyAuction.at(address).then(async (instance) => {
+            try {
+                await instance.withdrawal()
+            } catch (error) {
+                alert("Something went wrong!")
+            }
+        })
+    },
+
+    openVickreyAuction: async () => {
+        const address = $('#addressToCall').val()
+        const val = $('#openValueVickrey').val()
+        const nonce = $('#nonceVickrey').val()
+
+        await App.contracts.VickreyAuction.at(address).then(async (instance) => {
+            try {
+                await instance.open(nonce, {
+                    value: val
+                })
+            } catch (error) {
+                alert("Something went wrong!")
+            }
+        })
+    },
+
 
     simulateBlocks: async () => {
         blocks = $('#blocksToSimulate').val()

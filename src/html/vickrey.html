@@ -1,4 +1,4 @@
-<div>
+<div id="vickreyDescriptionDiv">
     <button type="button" onclick="App.getDescription()" class="btn btn-primary">Description</button>
     <button type="button" onclick="App.getPhase()" class="btn btn-primary">Phase</button>
     <button type="button" onclick="App.getMinDeposit()" class="btn btn-primary">Min Deposit</button>
@@ -7,12 +7,39 @@
 <!-- INJECT -->
 <div id="Description"> </div>
 
+<script>
+    if (App.activeAccountRole == "House") {
+        var div = document.createElement('div');
+        div.innerHTML =
+            '<div/>\
+                <hr/>\
+                <button type="button" onclick="App.activateVickreyAuction()" class="btn btn-warning">Activate Auction</button/>\
+                <button type="button" onclick="App.startWithdrawalVickreyAuction()" class="btn btn-warning">Start Withdrawal</button/>\
+                <button type="button" onclick="App.startOpeningVickreyAuction()" class="btn btn-warning">Start Opening</button/>\
+                <button type="button" onclick="App.finalizeVickreyAuction()" class="btn btn-warning">Finalize Auction</button>\
+            <div/>';
+
+        document.getElementById('vickreyDescriptionDiv').appendChild(div);
+    }
+</script>
+
 <div>
+    <hr />
+    <input type="text" class="form-control" placeholder="Insert the deposit value in wei..." id="bidValueVickrey">
     <input type="text" class="form-control" placeholder="bytes32   _HASH" id="hashVickrey">
-    <button type="button" onclick="alert('YES')" class="btn btn-warning">Bid</button>
+    </br>
+    <button type="button" onclick="App.bidVickreyAuction()" class="btn btn-warning">Bid</button>
 </div>
 
 <div>
+    <hr />
+    <button type="button" onclick="App.withdrawVickreyAuction()" class="btn btn-warning">Withdraw my bid</button>
+</div>
+
+<div>
+    <hr />
+    <input type="text" class="form-control" placeholder="Insert your bid value in wei.." id="openValueVickrey">
     <input type="text" class="form-control" placeholder="bytes32   _NONCE" id="nonceVickrey">
-    <button type="button" onclick="alert('YES')" class="btn btn-warning">Phase</button>
+    </br>
+    <button type="button" onclick="App.openVickreyAuction()" class="btn btn-warning">Open</button>
 </div>
