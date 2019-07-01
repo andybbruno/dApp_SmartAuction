@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Smart Auction</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="vendor/truffle-contract/dist/truffle-contract.js"></script>
+  <script src="app.js"></script>
+</head>
+
+<body class="bg-dark">
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-sm bg-warning fixed-top">
+    <div class="container">
+      <!-- <h3 class="text-light" onclick="App.changePage('homepage');">DAPP</h3> -->
+      <a class="navbar-brand font-weight-bolder text-dark" href="">DAPP</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <span id="account"></span>
+            <span id="accountRole" style="font-size: 100%;"></span>
+          </li>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Title -->
+  <div class="container-fluid bg-light" id="Title" style="padding-bottom: 30px;margin-bottom: 30px;margin-top: 50px;">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="mt-5">Smart Auction</h1>
+        <p class="lead">Peer to Peer Systems and Blockchains 2018/2019</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cards -->
+  <div class="container" id="Cards" style="margin-bottom: 30px;">
+    <div class="card-deck text-light">
+      <div class="card bg-primary">
+        <div class="card-body text-center">
+          <h2>House:</h2>
+          <p id="houseTxt"> 0x0 </p>
+        </div>
+      </div>
+      <div class="card bg-danger">
+        <div class="card-body text-center">
+          <h2>Seller:</h2>
+          <p id="sellerTxt"> 0x0 </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <!-- Home Page Content -->
+  <div class="container" id="Home" style="display: none;">
+
+    <div class=" card bg-light text-center">
+      <div class="card-body">
+        <h2>Auction List</h2>
+        </br>
+        <table class="table table-bordered" id="eventList">
+          <thead class="thead-light">
+            <tr>
+              <th>Address</th>
+              <th>Type</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- HERE WILL BE SHOWED THE AUCTION LIST -->
+          </tbody>
+        </table>
+        <div class="spinner-border" role="status" id="loadingSpinner">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
+    </br>
+
+    <div class="card bg-light text-center">
+      <div class="card-body">
+        <h2>Create a new auction</h2>
+        </br>
+        <button type="button" onclick="App.changePage('dutchPage')" class="btn btn-warning"">Dutch</button>
+        <button type=" button" onclick="App.changePage('vickreyPage')" class="btn btn-success"">Vickrey</button>
+      </div>
+    </div>
+    </br>
+    <div class=" card bg-light text-center">
+          <div class="card-body">
+            <h2>Tools</h2>
+            </br>
+            <button type="button" onclick="App.changePage('address')" class="btn btn-primary">Set Roles</button>
+            <button type="button" onclick="App.changePage('bidPage')" class="btn btn-danger">Generate Bid</button>
+          </div>
+      </div>
+      </br>
+    </div>
+
+
+
+    <!-- Dutch Auction Content -->
+    <div class="container" id="Dutch" style="display: none;">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="What are you going to sell?" id="itemDutch">
+            <input type="text" class="form-control" placeholder="Reserve price" id="resDutch">
+            <input type="text" class="form-control" placeholder="Initial Price" id="initDutch">
+
+            <select class="form-control" id="selDutch">
+              <option value="slow">Slow</option>
+              <option value="normal">Normal</option>
+              <option value="fast">Fast</option>
+            </select>
+
+          </div>
+          <button type="button" onclick="App.newDutch()" class="btn btn-success">Create</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Vickrey Auction Content -->
+    <div class="container" id="Vickrey" style="display: none;">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <form action="">
+            <div class="form-group">
+
+              <input type="text" class="form-control" placeholder="What are you going to sell?" id="itemVick">
+              <input type="text" class="form-control" placeholder="Reserve Price" id="resVick">
+              <input type="text" class="form-control" placeholder="Minimum Deposit" id="depVick">
+              <input type="text" class="form-control" placeholder="Commitment Lenght" id="comVick">
+              <input type="text" class="form-control" placeholder="Withdrawal Lenght" id="withVick">
+              <input type="text" class="form-control" placeholder="Opening Lenght" id="openVick">
+
+            </div>
+            <button type="button" onclick="App.newVickrey()" class="btn btn-success">Create</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Address Page Content -->
+    <div class="container" id="Address" style="display: none;">
+      <div class="row">
+        <div class="col-lg-12 text-center" style="margin-top: 50px;">
+          <input type=" text" class="form-control form-control-sm" placeholder="Auction House Address" id="houseAdd">
+          <input type=" text" class="form-control form-control-sm" placeholder="Seller Address" id="sellerAdd">
+        </div>
+        <div class="col-lg-12 text-center" style="margin-top: 10px;">
+          <button type="button" onclick="App.setAddress();" class="btn btn-success">Confirm</button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Generate Bid Content -->
+    <div class="container" id="GenerateBid" style="display: none;">
+      <div class="row">
+        <div class="col-lg-12 text-center">
+          <div class="form-group" style="margin-top: 50px;">
+            <input type=" text" class="form-control form-control-sm" placeholder="Insert a value.." name="bidvalue"
+              id="bidvalue">
+          </div>
+          <button type="button" class="btn btn-success" onclick="App.computeBid();">GenerateBid</button>
+          <div class="card bg-light" style="margin-top: 50px;display: none;" id="HashNonce">
+            <h2>Nonce</h2>
+            <p id="Nonce"> N O N C E </p>
+            <h2>Hash</h2>
+            <p id="Hash"> H A S H </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div id="Panel" style="display: none;">
+      <div class="container" id="AuctionUI">
+        <div class="card bg-info text-white text-center">
+          <div class="card-body" id="AuctionUIBody">
+            <h2>Auction Control Panel</h2>
+            </br>
+            <input type="text" class="form-control" placeholder="Insert an address.." id="addressToCall">
+            <button type="button" onclick="App.callContract()" class="btn btn-danger"> Interact </button>
+            <!-- Inject html -->
+            <div id="AuctionUIBodyResponse"></div>
+          </div>
+        </div>
+        </br>
+      </div>
+    </div>
+
+    <div id="Simulation">
+      <div class="container" id="AuctionUI">
+        <div class="card bg-success text-white text-center">
+          <div class="card-body" id="AuctionUIBody">
+            <h2>Simulate block minining</h2>
+            </br>
+            <div>
+              <input type="text" class="form-control" placeholder="# blocks" id="blocksToSimulate">
+              <button type="button" onclick="App.simulateBlocks()" class="btn btn-warning">Simulate</button>
+            </div>
+          </div>
+        </div>
+        </br>
+      </div>
+    </div>
+
+  </div>
+
+
+</body>
+
+</html>
