@@ -7935,12 +7935,12 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0xE9A52E13CeA43a1ece7435B588A1831d44f6b852",
-      "transactionHash": "0x6504a78cf6f22b66227711ded4683a6b1d8ce04e65878252685d06a46cc712f6"
+      "address": "0x2876277EA892a74190609BA4fd0cd92dA642D68c",
+      "transactionHash": "0x860ca150bc2a587cb95d789a4370ee441e6f8470da73ac8334f250165c0e5453"
     }
   },
   "schemaVersion": "3.0.11",
-  "updatedAt": "2019-07-02T09:02:40.175Z",
+  "updatedAt": "2019-07-02T10:31:17.200Z",
   "devdoc": {
     "author": "Andrea Bruno 585457",
     "details": "The following comments are written using the Solidity NatSpec Format.",

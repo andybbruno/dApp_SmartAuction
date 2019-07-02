@@ -182,34 +182,35 @@ App = {
                 var category
 
                 await App.contracts.DutchAuction.at(auctAddress[i]).then(async (instance) => {
-                    var descr = await instance.description();
-                    category = descr[0];
+                    var descr = await instance.description()
+                    category = descr[0]
                 })
 
                 if (category == "Dutch") {
-                    await App.contracts.DutchAuction.at(auctAddress[i]).then(function (instance) {
+                    await App.contracts.DutchAuction.at(auctAddress[i]).then(async (instance) => {
+                        var tmp = await instance.description()
+                        deployBlock = tmp[1] - 1
+
                         instance.auctionStarted({}, {
-                            fromBlock: 0,
+                            fromBlock: deployBlock,
                             toBlock: lastBlock
                             // toBlock: 'latest',
                         }).watch(async (error, event) => {
                             App.myMap.set(event.address, ["Started", "Dutch"])
                         })
-                    })
 
-                    await App.contracts.DutchAuction.at(auctAddress[i]).then(function (instance) {
+                        
                         instance.auctionValidation({}, {
-                            fromBlock: 0,
+                            fromBlock: deployBlock,
                             toBlock: lastBlock
                             // toBlock: 'latest',
                         }).watch(async (error, event) => {
                             App.myMap.set(event.address, ["Validation", "Dutch"])
                         })
-                    })
 
-                    await App.contracts.DutchAuction.at(auctAddress[i]).then(function (instance) {
+
                         instance.auctionFinished({}, {
-                            fromBlock: 0,
+                            fromBlock: deployBlock,
                             toBlock: lastBlock
                             // toBlock: 'latest',
                         }).watch(async (error, event) => {
@@ -228,9 +229,12 @@ App = {
                 })
 
                 if (category == "Vickrey") {
-                    await App.contracts.VickreyAuction.at(auctAddress[i]).then(function (instance) {
+                    await App.contracts.VickreyAuction.at(auctAddress[i]).then(async (instance) => {
+                        var tmp = await instance.description()
+                        deployBlock = tmp[1] - 1
+
                         instance.auctionStarted({}, {
-                            fromBlock: 0,
+                            fromBlock: deployBlock,
                             toBlock: lastBlock
                             // toBlock: 'latest',
                         }).watch(async (error, event) => {
@@ -238,7 +242,7 @@ App = {
                         })
 
                         instance.withdrawalStarted({}, {
-                            fromBlock: 0,
+                            fromBlock: deployBlock,
                             toBlock: lastBlock
                             // toBlock: 'latest',
                         }).watch(async (error, event) => {
@@ -246,7 +250,7 @@ App = {
                         })
 
                         instance.openingStarted({}, {
-                            fromBlock: 0,
+                            fromBlock: deployBlock,
                             toBlock: lastBlock
                             // toBlock: 'latest',
                         }).watch(async (error, event) => {
@@ -547,9 +551,9 @@ App = {
             descr = await instance.description()
             $("#Description").load("html/description.html", function () {
                 $("#categoryDescription").text(descr[0])
-                $("#houseDescription").text(descr[1])
-                $("#sellerDescription").text(descr[2])
-                $("#itemDescription").text(descr[3])
+                $("#houseDescription").text(descr[2])
+                $("#sellerDescription").text(descr[3])
+                $("#itemDescription").text(descr[4])
             });
 
             if (descr[0] == "Dutch") {
@@ -824,11 +828,11 @@ $(() => {
             }
             App.fillTable()
             first = false
-        }, 3000);
+        }, 2000);
     })
 
 
 })
 
 
-// a = await DutchAuction.at('')
+// a = await DutchAuction.at('0x65abc65504234839008ea73cfd8b1527607ff103')
