@@ -179,100 +179,106 @@ App = {
             }
         }).then(async () => {
             for (var i = 0; i < auctAddress.length; i++) {
-                await App.contracts.DutchAuction.at(auctAddress[i]).then(function (instance) {
-                    instance.auctionStarted({}, {
-                        fromBlock: 0,
-                        toBlock: lastBlock
-                        // toBlock: 'latest',
-                    }).watch(async (error, event) => {
-                        App.myMap.set(event.address, ["Started", "Dutch"])
-                    })
+                var category
+
+                await App.contracts.DutchAuction.at(auctAddress[i]).then(async (instance) => {
+                    var descr = await instance.description();
+                    category = descr[0];
                 })
+
+                if (category == "Dutch") {
+                    await App.contracts.DutchAuction.at(auctAddress[i]).then(function (instance) {
+                        instance.auctionStarted({}, {
+                            fromBlock: 0,
+                            toBlock: lastBlock
+                            // toBlock: 'latest',
+                        }).watch(async (error, event) => {
+                            App.myMap.set(event.address, ["Started", "Dutch"])
+                        })
+                    })
+
+                    await App.contracts.DutchAuction.at(auctAddress[i]).then(function (instance) {
+                        instance.auctionValidation({}, {
+                            fromBlock: 0,
+                            toBlock: lastBlock
+                            // toBlock: 'latest',
+                        }).watch(async (error, event) => {
+                            App.myMap.set(event.address, ["Validation", "Dutch"])
+                        })
+                    })
+
+                    await App.contracts.DutchAuction.at(auctAddress[i]).then(function (instance) {
+                        instance.auctionFinished({}, {
+                            fromBlock: 0,
+                            toBlock: lastBlock
+                            // toBlock: 'latest',
+                        }).watch(async (error, event) => {
+                            App.myMap.set(event.address, ["Finished", "Dutch"])
+                        })
+                    })
+                }
+
             }
         }).then(async () => {
             for (var i = 0; i < auctAddress.length; i++) {
-                await App.contracts.DutchAuction.at(auctAddress[i]).then(function (instance) {
-                    instance.auctionValidation({}, {
-                        fromBlock: 0,
-                        toBlock: lastBlock
-                        // toBlock: 'latest',
-                    }).watch(async (error, event) => {
-                        App.myMap.set(event.address, ["Validation", "Dutch"])
-                    })
+
+                await App.contracts.VickreyAuction.at(auctAddress[i]).then(async (instance) => {
+                    var descr = await instance.description();
+                    category = descr[0];
                 })
-            }
-        }).then(async () => {
-            for (var i = 0; i < auctAddress.length; i++) {
-                await App.contracts.DutchAuction.at(auctAddress[i]).then(function (instance) {
-                    instance.auctionFinished({}, {
-                        fromBlock: 0,
-                        toBlock: lastBlock
-                        // toBlock: 'latest',
-                    }).watch(async (error, event) => {
-                        App.myMap.set(event.address, ["Finished", "Dutch"])
+
+                if (category == "Vickrey") {
+                    await App.contracts.VickreyAuction.at(auctAddress[i]).then(function (instance) {
+                        instance.auctionStarted({}, {
+                            fromBlock: 0,
+                            toBlock: lastBlock
+                            // toBlock: 'latest',
+                        }).watch(async (error, event) => {
+                            App.myMap.set(event.address, ["Started", "Vickrey"])
+                        })
+
+                        instance.withdrawalStarted({}, {
+                            fromBlock: 0,
+                            toBlock: lastBlock
+                            // toBlock: 'latest',
+                        }).watch(async (error, event) => {
+                            App.myMap.set(event.address, ["Withdrawal", "Vickrey"])
+                        })
+
+                        instance.openingStarted({}, {
+                            fromBlock: 0,
+                            toBlock: lastBlock
+                            // toBlock: 'latest',
+                        }).watch(async (error, event) => {
+                            App.myMap.set(event.address, ["Opening", "Vickrey"])
+                        })
+
+                        instance.auctionFinished({}, {
+                            fromBlock: 0,
+                            toBlock: lastBlock
+                            // toBlock: 'latest',
+                        }).watch(async (error, event) => {
+                            App.myMap.set(event.address, ["Finished", "Vickrey"])
+                        })
+
                     })
-                })
+                }
             }
-            //NEW
-        }).then(async () => {
-            for (var i = 0; i < auctAddress.length; i++) {
-                await App.contracts.VickreyAuction.at(auctAddress[i]).then(function (instance) {
-                    instance.auctionStarted({}, {
-                        fromBlock: 0,
-                        toBlock: lastBlock
-                        // toBlock: 'latest',
-                    }).watch(async (error, event) => {
-                        App.myMap.set(event.address, ["Started", "Vickrey"])
-                    })
-                })
-            }
-        }).then(async () => {
-            for (var i = 0; i < auctAddress.length; i++) {
-                await App.contracts.VickreyAuction.at(auctAddress[i]).then(function (instance) {
-                    instance.withdrawalStarted({}, {
-                        fromBlock: 0,
-                        toBlock: lastBlock
-                        // toBlock: 'latest',
-                    }).watch(async (error, event) => {
-                        App.myMap.set(event.address, ["Withdrawal", "Vickrey"])
-                    })
-                })
-            }
-        }).then(async () => {
-            for (var i = 0; i < auctAddress.length; i++) {
-                await App.contracts.VickreyAuction.at(auctAddress[i]).then(function (instance) {
-                    instance.openingStarted({}, {
-                        fromBlock: 0,
-                        toBlock: lastBlock
-                        // toBlock: 'latest',
-                    }).watch(async (error, event) => {
-                        App.myMap.set(event.address, ["Opening", "Vickrey"])
-                    })
-                })
-            }
-        }).then(async () => {
-            for (var i = 0; i < auctAddress.length; i++) {
-                await App.contracts.VickreyAuction.at(auctAddress[i]).then(function (instance) {
-                    instance.auctionFinished({}, {
-                        fromBlock: 0,
-                        toBlock: lastBlock
-                        // toBlock: 'latest',
-                    }).watch(async (error, event) => {
-                        App.myMap.set(event.address, ["Finished", "Vickrey"])
-                    })
-                })
-            }
-        }).finally(async () => {
-            for (var [address, [state, kind]] of App.myMap) {
-                await App.insertEventRow(state, kind, address);
-            }
-            $('#loadingSpinner').hide()
         })
+    },
+
+    fillTable: async () => {
+        App.myMap.forEach(async (value, address) => {
+            App.insertEventRow(value[0], value[1], address);
+        })
+        $('#loadingSpinner').hide()
     },
 
     insertEventRow: async (status, type, address) => {
         // UPDATE TABLE AUCTIONS
         var tableRef = document.getElementById("eventList");
+
+
         // Insert a row at the end of the table
         let newRow = tableRef.insertRow(-1);
 
@@ -803,6 +809,25 @@ $(() => {
     $(window).load(() => {
         App.load()
     })
+
+    $(window).ready(() => {
+        //UPDATE CONTRACT TABLE
+
+        var first = true
+        setInterval(function () {
+            if (!first) {
+                var tableRef = document.getElementById("eventList");
+
+                for (var i = tableRef.rows.length - 1; i > 0; i--) {
+                    tableRef.deleteRow(i);
+                }
+            }
+            App.fillTable()
+            first = false
+        }, 3000);
+    })
+
+
 })
 
 

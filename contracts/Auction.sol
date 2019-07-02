@@ -10,6 +10,7 @@ contract Auction {
     /// @notice This struct incorporates the basic info about the auction.
     struct Description {
         string category;
+        uint deployBlock;
         address payable house;
         address payable seller;
         string itemName;

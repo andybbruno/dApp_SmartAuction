@@ -62,8 +62,10 @@ contract DutchAuction is Auction {
         description.seller = _seller;
         // the name of the item
         description.itemName = _itemName;
-        // and the category of the Auction
+        // the category of the Auction
         description.category = "Dutch";
+        // and the block number at deploy time
+        description.deployBlock = block.number;
 
 
         //Set state into "grace period"
