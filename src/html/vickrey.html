@@ -1,7 +1,7 @@
 <div id="vickreyDescriptionDiv">
-    <button type="button" onclick="App.getDescription()" class="btn btn-primary">Description</button>
-    <button type="button" onclick="App.getPhase()" class="btn btn-primary">Phase</button>
-    <button type="button" onclick="App.getMinDeposit()" class="btn btn-primary">Min Deposit</button>
+    <button type="button" onclick="Contract.getDescription()" class="btn btn-primary">Description</button>
+    <button type="button" onclick="Vickrey.getPhase()" class="btn btn-primary">Phase</button>
+    <button type="button" onclick="Vickrey.getMinDeposit()" class="btn btn-primary">Min Deposit</button>
 </div>
 
 <!-- INJECT -->
@@ -13,10 +13,10 @@
         div.innerHTML =
             '<div/>\
                 <hr/>\
-                <button type="button" onclick="App.activateVickreyAuction()" class="btn btn-warning">Activate Auction</button/>\
-                <button type="button" onclick="App.startWithdrawalVickreyAuction()" class="btn btn-warning">Start Withdrawal</button/>\
-                <button type="button" onclick="App.startOpeningVickreyAuction()" class="btn btn-warning">Start Opening</button/>\
-                <button type="button" onclick="App.finalizeVickreyAuction()" class="btn btn-warning">Finalize Auction</button>\
+                <button type="button" onclick="Vickrey.activateVickreyAuction()" class="btn btn-warning">Activate Auction</button/>\
+                <button type="button" onclick="Vickrey.startWithdrawalVickreyAuction()" class="btn btn-warning">Start Withdrawal</button/>\
+                <button type="button" onclick="Vickrey.startOpeningVickreyAuction()" class="btn btn-warning">Start Opening</button/>\
+                <button type="button" onclick="Vickrey.finalizeVickreyAuction()" class="btn btn-warning">Finalize Auction</button>\
             <div/>';
 
         document.getElementById('vickreyDescriptionDiv').appendChild(div);
@@ -28,12 +28,12 @@
     <input type="text" class="form-control" placeholder="Insert the deposit value in wei..." id="bidValueVickrey">
     <input type="text" class="form-control" placeholder="bytes32   _HASH" id="hashVickrey">
     </br>
-    <button type="button" onclick="App.bidVickreyAuction()" class="btn btn-warning">Bid</button>
+    <button type="button" onclick="Vickrey.bidVickreyAuction()" class="btn btn-warning">Bid</button>
 </div>
 
 <div>
     <hr />
-    <button type="button" onclick="App.withdrawVickreyAuction()" class="btn btn-warning">Withdraw my bid</button>
+    <button type="button" onclick="Vickrey.withdrawVickreyAuction()" class="btn btn-warning">Withdraw my bid</button>
 </div>
 
 <div>
@@ -41,5 +41,5 @@
     <input type="text" class="form-control" placeholder="Insert your bid value in wei.." id="openValueVickrey">
     <input type="text" class="form-control" placeholder="bytes32   _NONCE" id="nonceVickrey">
     </br>
-    <button type="button" onclick="App.openVickreyAuction()" class="btn btn-warning">Open</button>
+    <button type="button" onclick="Vickrey.openVickreyAuction()" class="btn btn-warning">Open</button>
 </div>

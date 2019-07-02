@@ -18,7 +18,13 @@
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="vendor/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="vendor/truffle-contract/dist/truffle-contract.js"></script>
-  <script src="app.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/listener.js"></script>
+  <script src="js/contract.js"></script>
+  <script src="js/vickrey.js"></script>
+  <script src="js/dutch.js"></script>
+  <script src="js/utils.js"></script>
+  <script src="js/blockchain.js"></script>
 </head>
 
 <body class="bg-dark">
@@ -26,7 +32,6 @@
   <!-- Navigation -->
   <nav class="navbar navbar-expand-sm bg-warning fixed-top">
     <div class="container">
-      <!-- <h3 class="text-light" onclick="App.changePage('homepage');">DAPP</h3> -->
       <a class="navbar-brand font-weight-bolder text-dark" href="">DAPP</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
         aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -76,7 +81,7 @@
 
 
   <!-- Home Page Content -->
-  <div class="container" id="Home" style="display: none;">
+  <div class="container" id="Home">
 
     <div class=" card bg-light text-center">
       <div class="card-body">
@@ -105,8 +110,8 @@
       <div class="card-body">
         <h2>Create a new auction</h2>
         </br>
-        <button type="button" onclick="App.changePage('dutchPage')" class="btn btn-warning"">Dutch</button>
-        <button type=" button" onclick="App.changePage('vickreyPage')" class="btn btn-success"">Vickrey</button>
+        <button type="button" onclick="Utils.changePage('dutchPage')" class="btn btn-warning"">Dutch</button>
+        <button type=" button" onclick="Utils.changePage('vickreyPage')" class="btn btn-success"">Vickrey</button>
       </div>
     </div>
     </br>
@@ -114,8 +119,8 @@
           <div class="card-body">
             <h2>Tools</h2>
             </br>
-            <button type="button" onclick="App.changePage('address')" class="btn btn-primary">Set Roles</button>
-            <button type="button" onclick="App.changePage('bidPage')" class="btn btn-danger">Generate Bid</button>
+            <button type="button" onclick="Utils.changePage('address')" class="btn btn-primary">Set Roles</button>
+            <button type="button" onclick="Utils.changePage('bidPage')" class="btn btn-danger">Generate Bid</button>
           </div>
       </div>
       </br>
@@ -139,7 +144,7 @@
             </select>
 
           </div>
-          <button type="button" onclick="App.newDutch()" class="btn btn-success">Create</button>
+          <button type="button" onclick="Dutch.newDutch()" class="btn btn-success">Create</button>
         </div>
       </div>
     </div>
@@ -159,7 +164,7 @@
               <input type="text" class="form-control" placeholder="Opening Lenght" id="openVick">
 
             </div>
-            <button type="button" onclick="App.newVickrey()" class="btn btn-success">Create</button>
+            <button type="button" onclick="Vickrey.newVickrey()" class="btn btn-success">Create</button>
           </form>
         </div>
       </div>
@@ -173,7 +178,7 @@
           <input type=" text" class="form-control form-control-sm" placeholder="Seller Address" id="sellerAdd">
         </div>
         <div class="col-lg-12 text-center" style="margin-top: 10px;">
-          <button type="button" onclick="App.setAddress();" class="btn btn-success">Confirm</button>
+          <button type="button" onclick="Utils.setAddress();" class="btn btn-success">Confirm</button>
         </div>
 
       </div>
@@ -187,7 +192,7 @@
             <input type=" text" class="form-control form-control-sm" placeholder="Insert a value.." name="bidvalue"
               id="bidvalue">
           </div>
-          <button type="button" class="btn btn-success" onclick="App.computeBid();">GenerateBid</button>
+          <button type="button" class="btn btn-success" onclick="Utils.computeBid();">GenerateBid</button>
           <div class="card bg-light" style="margin-top: 50px;display: none;" id="HashNonce">
             <h2>Nonce</h2>
             <p id="Nonce"> N O N C E </p>
@@ -199,14 +204,14 @@
     </div>
 
 
-    <div id="Panel" style="display: none;">
+    <div id="Panel">
       <div class="container" id="AuctionUI">
         <div class="card bg-info text-white text-center">
           <div class="card-body" id="AuctionUIBody">
             <h2>Auction Control Panel</h2>
             </br>
             <input type="text" class="form-control" placeholder="Insert an address.." id="addressToCall">
-            <button type="button" onclick="App.callContract()" class="btn btn-danger"> Interact </button>
+            <button type="button" onclick="Contract.interact()" class="btn btn-danger"> Interact </button>
             <!-- Inject html -->
             <div id="AuctionUIBodyResponse"></div>
           </div>
@@ -223,11 +228,21 @@
             </br>
             <div>
               <input type="text" class="form-control" placeholder="# blocks" id="blocksToSimulate">
-              <button type="button" onclick="App.simulateBlocks()" class="btn btn-warning">Simulate</button>
+              <button type="button" onclick="Blockchain.simulateBlocks()" class="btn btn-warning">Simulate</button>
             </div>
           </div>
         </div>
         </br>
+      </div>
+    </div>
+
+
+
+    <!-- TOAST -->
+    <div aria-live="polite" aria-atomic="true" style="min-height: 10px;">
+      <!-- Position it -->
+      <div style="position: absolute; top: 5em; left: 1em;" id="injectToastDiv">
+        <!-- INJECT-->
       </div>
     </div>
 

@@ -1,6 +1,6 @@
 <div id="dutchDescriptionDiv">
-    <button type="button" onclick="App.getDescription()" class="btn btn-primary">Description</button>
-    <button type="button" onclick="App.getActualPrice()" class="btn btn-warning">Get Actual Price</button>
+    <button type="button" onclick="Contract.getDescription()" class="btn btn-primary">Description</button>
+    <button type="button" onclick="Dutch.getActualPrice()" class="btn btn-warning">Get Actual Price</button>
 </div>
 
 <script>
@@ -8,20 +8,22 @@
         var div = document.createElement('div');
         div.innerHTML =
             '<div/>\
-                <button type="button" onclick="App.activateDutchAuction()" class="btn btn-warning">Activate Auction</button/>\
-                <button type="button" onclick="App.finalizeDutchAuction()" class="btn btn-warning">Finalize Auction</button>\
+                <hr/>\
+                <button type="button" onclick="Dutch.activateDutchAuction()" class="btn btn-warning">Activate Auction</button/>\
+                <button type="button" onclick="Dutch.finalizeDutchAuction()" class="btn btn-warning">Finalize Auction</button>\
             <div/>';
 
         document.getElementById('dutchDescriptionDiv').appendChild(div);
     }
 </script>
 
-<div>
-    <input type="text" class="form-control" placeholder="Insert your bid.. " id="etherValue">
-    <button type="button" onclick="App.bidDutch()" class="btn btn-warning">Bid</button>
-</div>
-
-
 
 <!-- INJECT -->
 <div id="Description"> </div>
+
+
+<div>
+    <hr/>
+    <input type="text" class="form-control" placeholder="Insert your bid.. " id="etherValue">
+    <button type="button" onclick="Dutch.bidDutch()" class="btn btn-warning">Bid</button>
+</div>

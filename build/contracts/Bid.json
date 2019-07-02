@@ -1450,8 +1450,8 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x9D889e18906f1Bf5A256D672860DE68d29a20b3A",
-      "transactionHash": "0xb84d36ef07ea3980c2f8f7195ddaebd38c7afc16fad1fb3c081ecc7a0e527408"
+      "address": "0x58fCE83a12A812583156daD989DEb95b69880beC",
+      "transactionHash": "0x597439b3e6f8e45910f2c2da23779d6b1bd82c0c41eee2b7e4c8b6ba3be01e6c"
     },
     "1561909123662": {
       "events": {},
@@ -1473,7 +1473,7 @@
     }
   },
   "schemaVersion": "3.0.11",
-  "updatedAt": "2019-07-02T10:31:17.188Z",
+  "updatedAt": "2019-07-02T16:50:43.146Z",
   "devdoc": {
     "author": "Andrea Bruno 585457",
     "details": "The following comments are written using the Solidity NatSpec Format.",

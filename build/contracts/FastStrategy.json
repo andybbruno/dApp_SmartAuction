@@ -2532,8 +2532,8 @@
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x71692F53680A772a931994C79825B3f42F9dfCbD",
-      "transactionHash": "0x56788ace025bd8702a8e21961e47a50386eb37a13526cf08a69e639e71fd2e49"
+      "address": "0x0Ddf89eDEe5D4458f96dd8018E5853348b807e15",
+      "transactionHash": "0xdefa8b81fb4d15dc2944596fc7c51c66496d5eda0879e75d87feb885bece4050"
     },
     "1561909123662": {
       "events": {},
@@ -2555,7 +2555,7 @@
     }
   },
   "schemaVersion": "3.0.11",
-  "updatedAt": "2019-07-02T10:31:17.193Z",
+  "updatedAt": "2019-07-02T16:50:43.155Z",
   "devdoc": {
     "details": "This contract extends `Strategy`",
     "methods": {},
