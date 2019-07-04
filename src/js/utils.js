@@ -1,4 +1,7 @@
 Utils = {
+
+    // Given a map <key,value> (in this case <address,event>)
+    // then update the table of the auctions
     fillTable: async (map) => {
         map.forEach(async (value, address) => {
             Utils.insertEventRow(value[0], value[1], address);
@@ -6,10 +9,12 @@ Utils = {
         $('#loadingSpinner').hide()
     },
 
+    // Given: a status (Started, Finished ....) ,
+    // a type (Dtuch / Vickrey) ,
+    // and an address (0x0123.....) ,
+    // this function will add those info to the auction list
     insertEventRow: async (status, type, address) => {
-        // UPDATE TABLE AUCTIONS
         var tableRef = document.getElementById("eventList");
-
 
         // Insert a row at the end of the table
         let newRow = tableRef.insertRow(-1);
@@ -19,9 +24,7 @@ Utils = {
         let newCell2 = newRow.insertCell(0);
         let newCell3 = newRow.insertCell(0);
 
-
         txt1 = status;
-        // Append a text node to the cell
         let newText1 = await document.createTextNode(txt1);
 
         txt2 = type
@@ -35,15 +38,18 @@ Utils = {
         await newCell3.appendChild(newText3);
     },
 
-    setCookie: function (cname, cvalue, exhours) {
+    // Given a key, a value and the time in hours,
+    // this funcion will set a cookie with the requested value
+    setCookie: function (key, value, exhours) {
         var d = new Date();
         d.setTime(d.getTime() + (exhours * 60 * 60 * 1000));
         var expires = "expires=" + d.toUTCString();
-        document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        document.cookie = key + "=" + value + ";" + expires + ";path=/";
     },
 
-    getCookie: function (cname) {
-        var name = cname + "=";
+    // Given a key, it retrieve the correspondent value
+    getCookie: function (key) {
+        var name = key + "=";
         var decodedCookie = decodeURIComponent(document.cookie);
         var ca = decodedCookie.split(';');
         for (var i = 0; i < ca.length; i++) {
@@ -58,8 +64,9 @@ Utils = {
         return "";
     },
 
+    // Passing a page name, the function will render the proper page
     changePage: async (page) => {
-        App.currentPage = page
+        
         const address = $('#Address')
         const home = $('#Home')
         const genBid = $('#GenerateBid')
@@ -67,6 +74,7 @@ Utils = {
         const vickrey = $('#Vickrey')
         const panel = $('#Panel')
         const simulation = $('#Simulation')
+
 
 
         if (page == "homepage") {
@@ -112,6 +120,7 @@ Utils = {
         }
     },
 
+    // This function checks the role of the current active account (on metamask)
     checkRole: async () => {
         var active = App.activeAccount.toUpperCase();
 
@@ -126,12 +135,18 @@ Utils = {
             document.getElementById("accountRole").className = "badge badge-success";
         }
 
+        // Update the badge (see top right in homepage)
         $("#accountRole").html(App.activeAccountRole)
     },
 
+
+
+    // This function is a tool to help people
+    // in making the bids in the Vickrey auction.
     computeBid: async () => {
         const bidvalue = $('#bidvalue').val();
 
+        // Retrieve the contract and then compute the values
         App.contracts.Bid.deployed().then(async (instance) => {
 
             const bid = await instance.generate(bidvalue);
@@ -143,6 +158,8 @@ Utils = {
         })
     },
 
+
+    // This will update the two big boxes in the homepage
     setAddress: async () => {
         if ($('#houseAdd').val() != "") {
             App.house = $('#houseAdd').val()
@@ -157,9 +174,16 @@ Utils = {
         location.reload();
     },
 
+
+    // Given a title and a message,
+    // it creates a new toast notification
     newToast: async (title, message) => {
+
+        // Mutex
         if (Utils.toastUnlocked) {
             time = new Date().getTime()
+
+            // Inject this DIV below the #injectToastDiv
             $("#injectToastDiv").append(`
                 <div style="min-width: 400px;" id="${time}" class="toast bg-info text-light" role="alert" aria-live="assertive" aria-atomic="true" data-autohide="true" data-delay="7000">
                     <div class="toast-header">
@@ -172,7 +196,6 @@ Utils = {
                     </div>
                 </div>
             `);
-
             $("#" + time).toast("show")
             setInterval(() => {
                 $("#" + time).remove();
@@ -180,3 +203,4 @@ Utils = {
         }
     },
 }
+

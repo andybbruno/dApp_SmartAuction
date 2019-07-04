@@ -1,0 +1,223 @@
+MacBook-Pro-di-Andrea:DAPP_SmartAuction andrea$ truffle migrate --reset --network ropsten
+
+Compiling your contracts...
+===========================
+> Everything is up to date, there is nothing to compile.
+
+
+Migrations dry-run (simulation)
+===============================
+> Network name:    'ropsten-fork'
+> Network id:      3
+> Block gas limit: 0x7a121d
+
+
+1_initial_migration.js
+======================
+
+   Replacing 'Migrations'
+   ----------------------
+   > block number:        5925179
+   > block timestamp:     1562253974
+   > account:             0x3811A4B4F8cAAB4d16fa123eAA35FD2940595C37
+   > balance:             2.411048472
+   > gas used:            173634
+   > gas price:           2 gwei
+   > value sent:          0 ETH
+   > total cost:          0.000347268 ETH
+
+   -------------------------------------
+   > Total cost:         0.000347268 ETH
+
+
+2_deploy_contracts.js
+=====================
+
+   Replacing 'AuctionHouse'
+   ------------------------
+   > block number:        5925181
+   > block timestamp:     1562253997
+   > account:             0x3811A4B4F8cAAB4d16fa123eAA35FD2940595C37
+   > balance:             2.404978898
+   > gas used:            3007848
+   > gas price:           2 gwei
+   > value sent:          0 ETH
+   > total cost:          0.006015696 ETH
+
+
+   Replacing 'Bid'
+   ---------------
+   > block number:        5925182
+   > block timestamp:     1562254014
+   > account:             0x3811A4B4F8cAAB4d16fa123eAA35FD2940595C37
+   > balance:             2.40474972
+   > gas used:            114589
+   > gas price:           2 gwei
+   > value sent:          0 ETH
+   > total cost:          0.000229178 ETH
+
+
+   Replacing 'FastStrategy'
+   ------------------------
+   > block number:        5925183
+   > block timestamp:     1562254025
+   > account:             0x3811A4B4F8cAAB4d16fa123eAA35FD2940595C37
+   > balance:             2.404548674
+   > gas used:            100523
+   > gas price:           2 gwei
+   > value sent:          0 ETH
+   > total cost:          0.000201046 ETH
+
+
+   Replacing 'SlowStrategy'
+   ------------------------
+   > block number:        5925184
+   > block timestamp:     1562254033
+   > account:             0x3811A4B4F8cAAB4d16fa123eAA35FD2940595C37
+   > balance:             2.404347628
+   > gas used:            100523
+   > gas price:           2 gwei
+   > value sent:          0 ETH
+   > total cost:          0.000201046 ETH
+
+
+   Replacing 'NormalStrategy'
+   --------------------------
+   > block number:        5925185
+   > block timestamp:     1562254041
+   > account:             0x3811A4B4F8cAAB4d16fa123eAA35FD2940595C37
+   > balance:             2.404148318
+   > gas used:            99655
+   > gas price:           2 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00019931 ETH
+
+   -------------------------------------
+   > Total cost:         0.006846276 ETH
+
+
+Summary
+=======
+> Total deployments:   6
+> Final cost:          0.007193544 ETH
+
+
+Starting migrations...
+======================
+> Network name:    'ropsten'
+> Network id:      3
+> Block gas limit: 0x7a121d
+
+
+1_initial_migration.js
+======================
+
+   Replacing 'Migrations'
+   ----------------------
+   > transaction hash:    0x97045c35b8a831c7d6a75fdd6fce26534e5c1c22b3d5a0b21f14d4b7a0d94a4f
+   > Blocks: 4            Seconds: 19
+   > contract address:    0xF1a28162Ad40d013E11c67e3aBF2319eDB478032
+   > block number:        5925188
+   > block timestamp:     1562254075
+   > account:             0x3811A4B4F8cAAB4d16fa123eAA35FD2940595C37
+   > balance:             2.40762306
+   > gas used:            188634
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00377268 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00377268 ETH
+
+
+2_deploy_contracts.js
+=====================
+
+   Replacing 'AuctionHouse'
+   ------------------------
+   > transaction hash:    0xd3785b1fccea7fdd365bb921fe2b62b22b0e94819356eaca4684581f13b2a268
+   > Blocks: 2            Seconds: 25
+   > contract address:    0x7a5966a4BF9dfC05285817de1cB302BF7100aB2A
+   > block number:        5925193
+   > block timestamp:     1562254127
+   > account:             0x3811A4B4F8cAAB4d16fa123eAA35FD2940595C37
+   > balance:             2.34602732
+   > gas used:            3037848
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.06075696 ETH
+
+
+   Replacing 'Bid'
+   ---------------
+   > transaction hash:    0xbb6ba5225c9dfe3706fe6e5173990771e8a9080c0a3e1bf16b7c85107fbab71c
+   > Blocks: 3            Seconds: 52
+   > contract address:    0x42b3D3AD06bA7F5dB0EeC4df51d9BF645D355D00
+   > block number:        5925196
+   > block timestamp:     1562254186
+   > account:             0x3811A4B4F8cAAB4d16fa123eAA35FD2940595C37
+   > balance:             2.34373554
+   > gas used:            114589
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00229178 ETH
+
+
+   Replacing 'FastStrategy'
+   ------------------------
+   > transaction hash:    0x758748b4f51bb2a01f6b77c062ea38ef5d876ef0b357d096989fa6320a311218
+   > Blocks: 2            Seconds: 29
+   > contract address:    0x96dB771E2EdC1F78CA923A5920C2a7887e60a429
+   > block number:        5925200
+   > block timestamp:     1562254234
+   > account:             0x3811A4B4F8cAAB4d16fa123eAA35FD2940595C37
+   > balance:             2.34172508
+   > gas used:            100523
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00201046 ETH
+
+
+   Replacing 'SlowStrategy'
+   ------------------------
+   > transaction hash:    0x3a52742ca52579bf78e359da727529a174e7fc7cf35aa253a87d8f1e747e14b9
+   > Blocks: 2            Seconds: 9
+   > contract address:    0x04C1b740574a40fCA3951cD83D6FeA65c97B703d
+   > block number:        5925202
+   > block timestamp:     1562254256
+   > account:             0x3811A4B4F8cAAB4d16fa123eAA35FD2940595C37
+   > balance:             2.33971462
+   > gas used:            100523
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00201046 ETH
+
+
+   Replacing 'NormalStrategy'
+   --------------------------
+   > transaction hash:    0xbe733eec3191c1e62e89e73449fa246728d7959d34b929818074104b200f99d3
+   > Blocks: 1            Seconds: 28
+   > contract address:    0xd2a3872745a9ca2919077C0D7adEA4ba89aD78A3
+   > block number:        5925205
+   > block timestamp:     1562254269
+   > account:             0x3811A4B4F8cAAB4d16fa123eAA35FD2940595C37
+   > balance:             2.33772152
+   > gas used:            99655
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.0019931 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.06906276 ETH
+
+
+Summary
+=======
+> Total deployments:   6
+> Final cost:          0.07283544 ETH

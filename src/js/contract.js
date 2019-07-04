@@ -1,13 +1,17 @@
 Contract = {
+
+    // Inject the correct html by looking at the type of auction.
     interact: async () => {
         const address = $('#addressToCall').val()
         let category
 
+        // Get the type of the contract
         await App.contracts.Auction.at(address).then(async (instance) => {
             var descr = await instance.description();
             category = descr[0];
         })
 
+        // Inject HTML
         if (category == "Dutch") {
             $("#AuctionUIBodyResponse").load("html/dutch.html");
         } else if (category == "Vickrey") {
@@ -17,12 +21,15 @@ Contract = {
         }
     },
 
+
+    // Retrieve the info from the description of the contract
     getDescription: async () => {
         const address = $('#addressToCall').val()
         var descr;
 
         await App.contracts.Auction.at(address).then(async (instance) => {
             descr = await instance.description()
+            // Inject HTML
             $("#Description").load("html/description.html", function () {
                 $("#categoryDescription").text(descr[0])
                 $("#houseDescription").text(descr[2])
@@ -30,6 +37,7 @@ Contract = {
                 $("#itemDescription").text(descr[4])
             });
 
+            // then add details based on the type of the auction
             if (descr[0] == "Dutch") {
                 await App.contracts.DutchAuction.at(address).then(async (instance) => {
                     status = await instance.state()
