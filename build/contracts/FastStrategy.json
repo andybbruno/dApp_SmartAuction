@@ -2526,14 +2526,14 @@
     "3": {
       "events": {},
       "links": {},
-      "address": "0x96dB771E2EdC1F78CA923A5920C2a7887e60a429",
-      "transactionHash": "0x758748b4f51bb2a01f6b77c062ea38ef5d876ef0b357d096989fa6320a311218"
+      "address": "0x6b1dF2EaEE8631d11C06610607bBDd87936fd379",
+      "transactionHash": "0xa3cc0743ce31d0e10a3ceddf79ca982f970f6111fec60cf7f26d8b151ef0a650"
     },
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x0Ddf89eDEe5D4458f96dd8018E5853348b807e15",
-      "transactionHash": "0xdefa8b81fb4d15dc2944596fc7c51c66496d5eda0879e75d87feb885bece4050"
+      "address": "0x6b1dF2EaEE8631d11C06610607bBDd87936fd379",
+      "transactionHash": "0x01bb59d8fd22f73953f411dbfe50756ef541662a63f3d69719cb1a8980087a52"
     },
     "1561909123662": {
       "events": {},
@@ -2555,7 +2555,7 @@
     }
   },
   "schemaVersion": "3.0.11",
-  "updatedAt": "2019-07-04T15:31:57.864Z",
+  "updatedAt": "2019-07-09T16:17:58.171Z",
   "devdoc": {
     "details": "This contract extends `Strategy`",
     "methods": {},

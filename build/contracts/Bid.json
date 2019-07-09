@@ -1444,14 +1444,14 @@
     "3": {
       "events": {},
       "links": {},
-      "address": "0x42b3D3AD06bA7F5dB0EeC4df51d9BF645D355D00",
-      "transactionHash": "0xbb6ba5225c9dfe3706fe6e5173990771e8a9080c0a3e1bf16b7c85107fbab71c"
+      "address": "0x15D5092111EfA75a07ac608bb7a21543b77d22de",
+      "transactionHash": "0x8f62489d19014b8eb91235c58491cde7e760e1a266c19aeb07dd444160b41769"
     },
     "5777": {
       "events": {},
       "links": {},
-      "address": "0x58fCE83a12A812583156daD989DEb95b69880beC",
-      "transactionHash": "0x597439b3e6f8e45910f2c2da23779d6b1bd82c0c41eee2b7e4c8b6ba3be01e6c"
+      "address": "0x15D5092111EfA75a07ac608bb7a21543b77d22de",
+      "transactionHash": "0xf8781bd8d19f0fd439d4141fe2e10905c4f1d7d20af6483360ad6f392fafc3c9"
     },
     "1561909123662": {
       "events": {},
@@ -1473,7 +1473,7 @@
     }
   },
   "schemaVersion": "3.0.11",
-  "updatedAt": "2019-07-04T15:31:57.860Z",
+  "updatedAt": "2019-07-09T16:17:58.166Z",
   "devdoc": {
     "author": "Andrea Bruno 585457",
     "details": "The following comments are written using the Solidity NatSpec Format.",
