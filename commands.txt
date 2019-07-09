@@ -1,3 +1,3 @@
-ganache-cli --db="/Users/andrea/Desktop/workspace/DAPP_SmartAuction/blockchain" -d --mnemonic="denial excite bind resemble wink tankequire husband spice adult battle large" -i="5777"
+ganache-cli --db="/Users/andrea/Desktop/workspace/DAPP_SmartAuction/blockchain" -d --mnemonic="explain oven trigger mobile false tribe proof hill midnight maid vicious stairs" -i="5777"
 npm run dev
 truffle migrate --reset --network test
